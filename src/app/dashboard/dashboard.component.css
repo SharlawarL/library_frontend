@@ -1,0 +1,40 @@
+.search{
+    width: 600px;
+}
+.sideItem{
+    width: 100%;
+    text-align: center;
+    color: silver;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-bottom: 1px solid silver; 
+    font-family: arial;
+    font-weight: bolder;
+}
+.sideItem:hover{
+    width: 100%;
+    text-align: center;
+    color: white;
+    background-color:#66ccff;
+}
+.active{
+    color: white;
+    background-color: #0099ff;
+}
+.side_menu{
+    position: absolute;
+    width: 250px;
+    background-color: #004d80;
+    height: 100%;
+    padding-top: 20px; 
+    z-index: 10;
+}
+@media only screen and (max-width: 800px) {
+    .side_menu{
+        position: relative;
+        width: 100%;
+        background-color: #004d80;
+        padding-top: 0px; 
+        
+    }
+  }

@@ -1,0 +1,115 @@
+<div class="container main" *ngFor="let user of data">
+  <div class="row">
+    <div class="col-sm-4">
+      <img src="https://webstockreview.net/images/book-clipart-animated-6.gif" height="200px" width="100%">
+    </div>
+    <div class="col-sm-8">
+        <h1 style="color: rgb(11, 105, 212)">Welcome {{ user.firstname }} {{ user.lastname }}</h1>
+    </div>
+  </div>
+  
+  <mat-tab-group>
+    <!-- <mat-tab label="Home"> Content 1 </mat-tab> -->
+    <mat-tab label="Book Issued">
+      <div class="box">
+        <h2>Book Issued</h2>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Book Name</th>
+              <th scope="col">Book Author</th>
+              <th scope="col">Author</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let log of logs" >
+              <th *ngIf="log.bstatus == 0" scope="row">#</th>
+              <td *ngIf="log.bstatus == 0" >{{ log.book_title}}</td>
+              <td *ngIf="log.bstatus == 0" >{{ log.book_author}}</td>
+              <td *ngIf="log.bstatus == 0" >{{ log.idate}}</td>
+              <td *ngIf="log.bstatus == 0" style="color: red">Not Returned</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </mat-tab>
+    <mat-tab label="Logs"> 
+      <div class="box">
+        <h2>Logs</h2>
+          <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Book Name</th>
+                  <th scope="col">Book Author</th>
+                  <th scope="col">Issue Date</th>
+                  <th scope="col">return date Date</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let log of logs">
+                  <th scope="row">#</th>
+                  <td>{{ log.book_title}}</td>
+                  <td>{{ log.book_author}}</td>
+                  <td>{{ log.idate}}</td>
+                  <td>{{ log.rdate}}</td>
+                  <td *ngIf="log.bstatus == 0" style="color: red">Not Returned</td>
+                  <td *ngIf="log.bstatus == 1" style="color: green">Returned</td>
+                </tr>
+              </tbody>
+            </table>
+      </div>  
+    </mat-tab>
+    <mat-tab label="Profile"> 
+      <div class="row">
+        <div class="col-sm-8">
+            <div class="box">
+        
+                <table>
+                  <tr>
+                    <td class="data">
+                        Firstname
+                    </td>
+                    <td class="Data">
+                        : {{ user.firstname }}
+                    </td>
+                    <td class="data">
+                        Lastname 
+                    </td>
+                    <td class="Data">
+                        : {{ user.lastname }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="data">
+                        Mobile
+                    </td>
+                    <td class="Data">
+                        : {{ user.mobile }}
+                    </td>
+                    <td class="data">
+                        Email
+                    </td>
+                    <td class="Data">
+                        : {{ user.email }}
+                    </td>
+                  </tr>
+                </table>
+              </div> 
+        </div>
+        <div class="col-sm-4">
+            <img src="https://cdn.dribbble.com/users/957405/screenshots/2629087/comp-1.gif" style="height: 200px;top: 50px;right: 300px;">
+        </div>
+      </div> 
+    </mat-tab>
+    <mat-tab label="logout" >
+      <div class="box" style="padding: 100px 100px">
+        Are You sure want to logout <br><br>
+        <button class="btn btn-primary" (click)="showLogout()" >Click here</button> 
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

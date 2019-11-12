@@ -1,0 +1,35 @@
+<form (submit)="updateBook($event)">
+<h3>Update Details</h3>
+<input type="hidden" id="id" value="{{data.id}}">
+<mat-form-field class="booksInput">
+  <input matInput id="title" value="{{data.title}}" placeholder="Book Title" >
+  <!-- <mat-error *ngIf="titleFormControl.hasError('required')">
+    Title is <strong>required</strong>
+  </mat-error> -->
+</mat-form-field>
+<mat-form-field class="booksInput">
+  <input matInput id="author" value="{{data.author}}" placeholder="Book Author">
+  <!-- <mat-error *ngIf="authorFormControl.hasError('required')">
+    Author is <strong>required</strong>
+  </mat-error> -->
+</mat-form-field>
+  <mat-form-field class="booksInput">
+    <input matInput id="publication" value=" {{data.publication}}" placeholder="Book publication" >
+    <!-- <mat-error *ngIf="publicationFormControl.hasError('required')">
+      Publication is <strong>required</strong>
+    </mat-error> -->
+  </mat-form-field>
+  <mat-form-field class="booksInput">
+    <input matInput id="year" placeholder="Publication Year" value="{{data.year}}">
+    <!-- <mat-error *ngIf="yearFormControl.hasError('required')">
+      Year is <strong>required</strong> 
+    </mat-error>-->
+  </mat-form-field>
+  <mat-form-field class="booksInput">
+    <input matInput id="quntity" placeholder="Book Quntity" value="{{data.quntity}}" >
+    <!-- <mat-error *ngIf="quntityFormControl.hasError('required')">
+      Quntity is <strong>required</strong>
+    </mat-error> -->
+  </mat-form-field>
+<button class="btn btn-primary">Update</button>
+</form>

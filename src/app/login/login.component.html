@@ -1,0 +1,39 @@
+<mat-progress-bar *ngIf="loder" mode="indeterminate"></mat-progress-bar>
+<div class="container">
+  <mat-card class="loginCard">
+    <mat-card-header>
+      <div mat-card-avatar class="header-image"></div>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="Loginform" (submit)="loginData($event)">
+          <b style="color:red">{{ email }}</b>
+        <mat-form-field class="loginInput">
+         
+          <input matInput id="email" placeholder="Email" >
+          <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Please enter a valid email address
+          </mat-error> -->
+          
+        </mat-form-field> 
+        <b style="color:red">{{ password }}</b>
+        <mat-form-field class="loginInput">
+          <input matInput id="password" placeholder="Password">
+         
+          <mat-error *ngIf="email">
+            Password is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Sign In as a</mat-label>
+            <select id="type" matNativeControl required>
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
+          </mat-form-field>
+        <button class="btn btn-primary" style="margin-left: 50px">Sign In</button>
+      </form>
+    </mat-card-content>
+    <!-- <a href="">Create Admin Account</a> -->
+  </mat-card>
+</div>

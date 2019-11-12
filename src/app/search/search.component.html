@@ -1,0 +1,28 @@
+<h1>Search Result</h1>
+
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">FirstName</th>
+        <th scope="col">Lastname</th>
+        <th scope="col">Mobile</th>
+        <th scope="col">Email</th>
+        <th scope="col">Action</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of data">
+        <td>{{user.firstname}}</td>
+        <td>{{user.lastname}}</td>
+        <td>{{user.mobile}}</td>
+        <td>{{user.email}}</td>
+        <td *ngIf="user.status == '1'" style="color:rgb(25, 146, 226)" (click)="statusChange(user.user_id,'Inactive')">Active</td>
+        <td *ngIf="user.status == '0'" style="color:red" (click)="statusChange(user.user_id,'Active')">Inactive</td>
+        <td> 
+            <i class="fa fa-eye" (click)="openDialog(user.user_id)"></i> &nbsp;&nbsp;
+            <i class="fa fa-trash" (click)="deleteUser(user.user_id)"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>

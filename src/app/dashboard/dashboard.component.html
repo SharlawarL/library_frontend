@@ -1,0 +1,111 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+      <button type="button" mat-button (click)="drawer.toggle()">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    <a class="navbar-brand" href="#">Online Library Management System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
+      <form cllass="form-inline my-2 my-lg-0" (click)="searchUser()">
+        <input class="form-control mr-sm-2 search" [(ngModel)]="searchText" id="Search"  type="text" placeholder="Search" aria-label="Search" [ngModelOptions]="{standalone: true}">
+      </form>
+    </div>
+  </div>
+</nav>
+<mat-drawer #drawer class="side_menu" mode="side" opened>
+    <div class="sideItem" *ngIf="classActive != 'Home'" (click)="showHome()">
+        Dashboard
+    </div>
+    <div class="sideItem active" *ngIf="classActive == 'Home'" (click)="showHome()">
+        Dashboard
+    </div>
+    <div class="sideItem"  *ngIf="classActive != 'Logs'" (click)="showLogs()">
+        User Logs
+    </div>
+    <div class="sideItem active"  *ngIf="classActive == 'Logs'" (click)="showLogs()">
+        User Logs
+    </div>
+    <div class="sideItem" *ngIf="classActive != 'User'" (click)="showUser()">
+        User
+    </div>
+    <div class="sideItem active" *ngIf="classActive == 'User'" (click)="showUser()">
+        User
+    </div>
+    <div class="sideItem" *ngIf="classActive != 'Books'" (click)="showBooks()">
+        Books
+    </div>
+    <div class="sideItem active" *ngIf="classActive == 'Books'" (click)="showBooks()">
+        Books
+    </div>
+    <div class="sideItem" (click)="showLogout()">
+        Logout
+    </div>
+</mat-drawer>
+
+<!-- <div class="side_menu">
+    <div class="sideItem" *ngIf="classActive != 'Home'" (click)="showHome()">
+        Dashboard
+    </div>
+    <div class="sideItem active" *ngIf="classActive == 'Home'" (click)="showHome()">
+        Dashboard
+    </div>
+    <div class="sideItem"  *ngIf="classActive != 'Logs'" (click)="showLogs()">
+        User Logs
+    </div>
+    <div class="sideItem active"  *ngIf="classActive == 'Logs'" (click)="showLogs()">
+        User Logs
+    </div>
+    <div class="sideItem" *ngIf="classActive != 'User'" (click)="showUser()">
+        User
+    </div>
+    <div class="sideItem active" *ngIf="classActive == 'User'" (click)="showUser()">
+        User
+    </div>
+    <div class="sideItem" *ngIf="classActive != 'Books'" (click)="showBooks()">
+        Books
+    </div>
+    <div class="sideItem active" *ngIf="classActive == 'Books'" (click)="showBooks()">
+        Books
+    </div>
+    <div class="sideItem" (click)="showLogout()">
+        Logout
+    </div>
+  </div> -->
+  
+<div class="container" style="margin-top: 20px;width: 800px;">
+  <div class="row">
+    <div class="col-sm-10" style="padding: 20px 20px;" *ngIf="!search">
+        <router-outlet ></router-outlet>
+    </div>
+    <div class="col-sm-10" style="padding: 20px 20px;" *ngIf="search">
+            <h1>Search Result</h1>
+
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">FirstName</th>
+                    <th scope="col">Lastname</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">View</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of data | search:searchText">
+                    <td>{{user.firstname}}</td>
+                    <td>{{user.lastname}}</td>
+                    <td>{{user.mobile}}</td>
+                    <td>{{user.email}}</td>
+                    <td> 
+                        <i class="fa fa-eye" (click)="openDialog(user.user_id)"></i>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+    </div>
+  </div>
+</div>

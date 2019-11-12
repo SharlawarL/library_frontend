@@ -1,0 +1,115 @@
+<div class="container main" *ngFor="let user of userData">
+<div class="row">
+  <div class="col-sm-3">
+      <img src="https://designmodo.com/wp-content/uploads/2015/09/contacts.gif" style="height: 100px;top: 50px;right: 300px;">
+  </div>
+  <div class="col-sm-6">
+      <h1>Mr. {{ user.firstname }} {{ user.lastname }}</h1>
+  </div>
+</div>
+  
+    <mat-tab-group>
+      <!-- <mat-tab label="Home"> Content 1 </mat-tab> -->
+      <mat-tab label="Book Issued">
+          <form class="issueform" (submit)="issueBook($event)">
+            <input type="hidden" id="User" value="{{user.user_id}}">
+              <mat-form-field style="padding: 20px 20px">
+                  <mat-label>Select Books</mat-label>
+                  <select id="Book" matNativeControl required>
+                    <option>Select</option>
+                      <option *ngFor="let book of books" value="{{book.book_id}}" style="padding: 5px 10px">
+                      {{book.book_title}}
+                      </option>    
+                  </select>
+                </mat-form-field>
+              <button class="btn btn-primary" style="margin-left: 50px">Issue</button>
+              </form>
+        <div class="box">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Book Name</th>
+                <th scope="col">Book Author</th>
+                <th scope="col">Author</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let log of logs" >
+                <th *ngIf="log.bstatus == 0" scope="row">#</th>
+                <td *ngIf="log.bstatus == 0" >{{ log.book_title}}</td>
+                <td *ngIf="log.bstatus == 0" >{{ log.book_author}}</td>
+                <td *ngIf="log.bstatus == 0" >{{ log.idate}}</td>
+                <td *ngIf="log.bstatus == 0" style="color: red" (click)="returnBook(log.id)" >Not Returned</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </mat-tab>
+      <mat-tab label="Logs"> 
+        <div class="box">
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Book Name</th>
+                    <th scope="col">Book Author</th>
+                    <th scope="col">Issue Date</th>
+                    <th scope="col">return date Date</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let log of logs">
+                    <th scope="row">#</th>
+                    <td>{{ log.book_title}}</td>
+                    <td>{{ log.book_author}}</td>
+                    <td>{{ log.idate}}</td>
+                    <td>{{ log.rdate}}</td>
+                    <td *ngIf="log.bstatus == 0" style="color: red" (click)="returnBook(log.id)">Not Returned</td>
+                    <td *ngIf="log.bstatus == 1" style="color: green">Returned</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>  
+      </mat-tab>
+      <mat-tab label="Profile"> 
+        <div class="box">
+          
+          <table>
+            <tr>
+              <td class="data">
+                  Firstname
+              </td>
+              <td class="Data">
+                  : {{ user.firstname }}
+              </td>
+              <td class="data">
+                  Lastname 
+              </td>
+              <td class="Data">
+                  : {{ user.lastname }}
+              </td>
+            </tr>
+            <tr>
+              <td class="data">
+                  Mobile
+              </td>
+              <td class="Data">
+                  : {{ user.mobile }}
+              </td>
+              <td class="data">
+                  Email
+              </td>
+              <td class="Data">
+                  : {{ user.email }}
+              </td>
+            </tr>
+          </table>
+        </div>  
+      
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <button type="button" class="btn btn-primary" (click)="closeBox()" style="float: right;bottom: 0;">Close</button>

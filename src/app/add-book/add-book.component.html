@@ -1,0 +1,43 @@
+<mat-progress-bar *ngIf="loder" mode="indeterminate"></mat-progress-bar>
+<div class="container">
+  <mat-card class="booksCard">
+    <mat-card-header>
+      <mat-card-title>Enter Book Details</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="booksform" (submit)="bookData($event)">
+        <mat-form-field class="booksInput">
+          <input matInput id="title" placeholder="Book Title">
+          <!-- <mat-error *ngIf="titleFormControl.hasError('required')">
+            Title is <strong>required</strong>
+          </mat-error> -->
+        </mat-form-field>
+        <mat-form-field class="booksInput">
+          <input matInput id="author" placeholder="Book Author">
+          <!-- <mat-error *ngIf="authorFormControl.hasError('required')">
+            Author is <strong>required</strong>
+          </mat-error> -->
+        </mat-form-field>
+          <mat-form-field class="booksInput">
+            <input matInput id="publication" placeholder="Book publication" >
+            <!-- <mat-error *ngIf="publicationFormControl.hasError('required')">
+              Publication is <strong>required</strong>
+            </mat-error> -->
+          </mat-form-field>
+          <mat-form-field class="booksInput">
+            <input matInput id="year" placeholder="Publication Year" >
+            <!-- <mat-error *ngIf="yearFormControl.hasError('required')">
+              Year is <strong>required</strong>
+            </mat-error> -->
+          </mat-form-field>
+          <mat-form-field class="booksInput">
+            <input matInput id="qunitity" placeholder="Book Quntity">
+            <!-- <mat-error *ngIf="quntityFormControl.hasError('required')">
+              Quntity is <strong>required</strong>
+            </mat-error> -->
+          </mat-form-field>
+        <button class="btn btn-primary" >Add Book</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

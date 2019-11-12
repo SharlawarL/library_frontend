@@ -1,0 +1,33 @@
+<button type="button" class="btn btn-primary" (click)="showAddbooks()" style="float: right;">Add Books</button>
+
+<h1>Books Details</h1>
+
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
+        <th scope="col">Publication</th>
+        <th scope="col">Year</th>
+        <th scope="col">Issued</th>
+        <th scope="col">Available</th>
+        <th scope="col">Quntity</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let books of data">
+        <td>{{books.book_title}}</td>
+        <td>{{books.book_author}}</td>
+        <td>{{books.book_publication}}</td>
+        <td>{{books.publication_year}}</td>
+        <td [ngStyle]="{'color':books.quntity === books.issue? 'red': 'green'}">{{books.issue}}</td>
+        <td [ngStyle]="{'color':books.quntity === books.issue? 'red': 'green'}" >{{books.quntity - books.issue}}</td>
+        <td [ngStyle]="{'color':books.quntity === books.issue? 'red': 'green'}">{{books.quntity}}</td>
+        <td>  
+          <i class="fa fa-pencil-square" (click)="openDialog(books.book_id,books.book_title,books.book_author,books.book_publication,books.publication_year,books.quntity)"></i>  &nbsp;&nbsp;&nbsp;
+          <i class="fa fa-trash"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>

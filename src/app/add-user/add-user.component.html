@@ -1,0 +1,54 @@
+<div class="container">
+  <mat-card class="booksCard">
+    <mat-card-header>
+      <mat-card-title>Enter User Details</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="booksform" (submit)="userData($event)">
+        <b style="color:red">{{ firstname }} </b>
+        <mat-form-field class="booksInput">
+          <input matInput id="firstname" placeholder="Firstname">
+          <!-- <mat-error *ngIf="firstnameFormControl.hasError('required')">
+            Title is <strong>required</strong>
+          </mat-error> -->
+        </mat-form-field>
+        <b style="color:red">{{ lastname }}</b>
+        <mat-form-field class="booksInput">
+          <input matInput id="lastname" placeholder="Lastname" >
+          <!-- <mat-error *ngIf="lastnameFormControl.hasError('required')">
+            Author is <strong>required</strong>
+          </mat-error> -->
+        </mat-form-field>
+        <b style="color:red">{{ mobile }}</b>
+          <mat-form-field class="booksInput">
+            <input matInput id="mobile" placeholder="Enter mobile">
+            <!-- <mat-error *ngIf="mobileFormControl.hasError('required')">
+              Publication is <strong>required</strong>
+            </mat-error> -->
+          </mat-form-field>
+          <b style="color:red">{{ email }}</b>
+          <mat-form-field class="booksInput">
+            <input matInput id="email" placeholder="Enter Email" >
+            <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
+              Year is <strong>required</strong>
+            </mat-error> -->
+          </mat-form-field>
+          <b style="color:red">{{ password }}</b>
+          <mat-form-field class="booksInput">
+            <input matInput id="password" placeholder="Enter password" >
+            <!-- <mat-error *ngIf="passwordFormControl.hasError('required')">
+              Quntity is <strong>required</strong>
+            </mat-error> -->
+          </mat-form-field>
+          <b style="color:red">{{ passwordcc}}</b>
+          <mat-form-field class="booksInput">
+            <input matInput id="passwordcc" placeholder="conform password" >
+            <!-- <mat-error *ngIf="passwordccFormControl.hasError('required')">
+              Quntity is <strong>required</strong>
+            </mat-error> -->
+          </mat-form-field>
+        <button class="btn btn-primary" >Add User</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

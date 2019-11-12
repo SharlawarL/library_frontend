@@ -1,0 +1,12 @@
+<h3>Select Book</h3>
+
+<mat-form-field>
+    <mat-label>Book</mat-label>
+    <select id="type" matNativeControl required>
+      <option value="user">User</option>
+      <option value="admin">Admin</option>
+    </select>
+  </mat-form-field>
+  <button class="btn btn-primary" style="margin-left: 50px">Sign In</button>
+
+  <button class="btn btn-primary" style="margin-left: 50px" (click)="onNoClick()">Close</button>

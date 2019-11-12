@@ -1,0 +1,104 @@
+<h1>Users Log</h1>
+  
+<mat-tab-group style="width: 900px;">
+    <mat-tab label="Logs"> 
+        <div class="box" >
+            <mat-form-field>
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            </mat-form-field>
+            <div class="mat-elevation-z8">
+            <mat-table [dataSource]="dataSource">
+              <ng-container matColumnDef="fullname">
+                <mat-header-cell *matHeaderCellDef> Full Name </mat-header-cell>
+                <mat-cell *matCellDef="let log"> {{ log.fullname }}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="book_title">
+                <mat-header-cell *matHeaderCellDef> Book Title </mat-header-cell>
+                <mat-cell *matCellDef="let log"> {{ log.book_title }}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="book_author">
+                <mat-header-cell *matHeaderCellDef> Book Author </mat-header-cell>
+                <mat-cell *matCellDef="let log"> {{ log.book_author }}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="idate">
+                <mat-header-cell *matHeaderCellDef> Book Issued </mat-header-cell>
+                <mat-cell *matCellDef="let log"> {{ log.idate }}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+                <mat-cell *matCellDef="let log"> 
+                  <button (click)="returnBook(log.id)" *ngIf="log.bstatus == 0" class="btn btn-danger">Click to Returned</button>
+                  <button *ngIf="log.bstatus == 1" class="btn btn-success">Book is Returned</button>
+                </mat-cell>
+              </ng-container>
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+            <mat-paginator [pageSizeOptions]="[3,5,7]"></mat-paginator>
+          </div>
+        </div>  
+      </mat-tab>
+    <mat-tab label="Book Issued">
+      <div class="box">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+        <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <ng-container matColumnDef="fullname">
+            <mat-header-cell *matHeaderCellDef> Full Name </mat-header-cell>
+            <mat-cell *matCellDef="let log"> <div *ngIf="log.bstatus == 0">{{ log.fullname }}</div></mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="book_title">
+            <mat-header-cell *matHeaderCellDef> Book Title </mat-header-cell>
+            <mat-cell *matCellDef="let log"> <div *ngIf="log.bstatus == 0">{{ log.book_title }} </div></mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="book_author">
+            <mat-header-cell *matHeaderCellDef> Book Author </mat-header-cell>
+            <mat-cell *matCellDef="let log"> <div *ngIf="log.bstatus == 0"> {{ log.book_author }} </div></mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="idate">
+            <mat-header-cell *matHeaderCellDef> Book Issued </mat-header-cell>
+            <mat-cell *matCellDef="let log"> <div *ngIf="log.bstatus == 0">{{ log.idate }} </div></mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+            <mat-cell *matCellDef="let log" ><div *ngIf="log.bstatus == 0"> <button class="btn btn-danger">Book is Returned</button> </div></mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+    </mat-tab>
+    <mat-tab label="Book Returned">
+        <div class="box">
+            <mat-form-field>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+              </mat-form-field>
+              <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <ng-container matColumnDef="fullname">
+                  <mat-header-cell *matHeaderCellDef> Full Name </mat-header-cell>
+                  <mat-cell *matCellDef="let log"> <div *ngIf="log.bstatus == 1">{{ log.fullname }}</div></mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="book_title">
+                  <mat-header-cell *matHeaderCellDef> Book Title </mat-header-cell>
+                  <mat-cell *matCellDef="let log"> <div *ngIf="log.bstatus == 1">{{ log.book_title }} </div></mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="book_author">
+                  <mat-header-cell *matHeaderCellDef> Book Author </mat-header-cell>
+                  <mat-cell *matCellDef="let log"> <div *ngIf="log.bstatus == 1"> {{ log.book_author }} </div></mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="idate">
+                  <mat-header-cell *matHeaderCellDef> Book Issued </mat-header-cell>
+                  <mat-cell *matCellDef="let log"> <div *ngIf="log.bstatus == 1">{{ log.idate }} </div></mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="status">
+                  <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+                  <tr *matCellDef="let log" ><mat-cell *ngIf="log.bstatus == 1"><div > <button class="btn btn-success">Book is Returned</button> </div></mat-cell></tr>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+              </mat-table>
+        </div>
+      </mat-tab>
+    
+  </mat-tab-group>
