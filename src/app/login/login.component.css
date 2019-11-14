@@ -25,3 +25,209 @@
 a{
     text-decoration: none;
 }
+.box-rot{
+    padding-top: 0px;
+    width: 100%;
+    height: 1000px;
+    background-color: black;
+    overflow-y: hidden;
+}
+.rotating{
+    width: 700px;
+    height: 700px;
+    margin: 100px auto;
+    text-align: center;
+    border: 3px dotted  red;
+    border-radius: 400px;
+    animation: rot 12.5s linear infinite forwards;
+    /* animation-name: rot;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-delay: 10s; */
+    background-image: url('../../assets/img/Galaxy.png');
+    background-size: cover;
+}
+.r{
+    border-radius: 25px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.r1{
+    width: 25px;
+    height: 25px;
+    background-color: red;
+    border: 2px solid yellow;
+    margin: 90px;
+}
+.r2{
+    background-color: yellow;
+    margin: 90px;
+    width: 5px;
+    height: 5px;
+}
+.r3{
+    background-color: green;
+    margin: -25px;
+    width: 50px;
+    height: 50px;
+    z-index: 20;
+}
+.r4{
+    background-color: black;
+    margin: 100px;
+}   
+.rotating:hover{
+    animation-play-state: paused;
+    cursor: pointer;
+}
+.r3:hover{
+    background-color: red;
+    position: absolute;
+}
+.r3data{
+    display: none;
+    position: relative;
+    overflow: visible;
+    padding: 20px 20px;
+    z-index: 10;
+    margin: -600px auto;
+    text-align: center;
+    width: 500px;
+    border-radius: 400px;
+    background-color: black;
+    color: white;
+    border:2px dotted white;   
+}
+.r3:hover .data{
+    display: none;
+    visibility:hidden;
+}
+.data{
+    display: block;
+    position: relative;
+    overflow: visible;
+    padding: 20px 20px;
+    z-index: 10;
+    margin: -600px auto;
+    text-align: center;
+    width: 500px;
+    border-radius: 400px;
+    background-color: black;
+    color: white;
+    border:2px dotted white;                                                                                                                                                                                                                         
+
+}
+.cardBox
+{
+    background-color: black;
+    width: 100%;
+    padding-bottom: 100px;
+}
+.cardBox1
+{
+    background-color: black;
+    width: 1000px;
+    margin: 0px auto;
+    display: flex;
+}
+.cards{
+    width: 300px;
+    height: 400px;
+    color:white;
+    border: 2px solid white;
+    padding: 10px 10px;
+    text-align: justify;
+    margin: 10px 10px;
+    cursor: pointer;
+    transform: skewY(20deg);
+    transition: width 2s,border 2s,color 2s,transform 2s,text-shadow 2s;
+}
+.cards:hover{
+    width: 300px;
+    height: 400px;
+    color: white;
+    text-shadow: 0px 0px 5px red;
+    border: 2px dashed red;
+    background-color: black;
+    padding: 10px 10px;
+    text-align: justify;
+    margin: 10px 10px;
+    cursor: pointer;
+    transform: rotate(90deg);
+    /* transform: translate(-50px, -50px); */
+    /* transform: rotate(20deg); */
+    transform: skewY(0deg);
+}
+.cards:hover h3{
+    color: red;
+}
+.btn{
+    border: 1px solid white;
+    color: white;
+    right: 0px;
+}
+@keyframes rot {
+    0% {
+        /* background-color: red; */
+        transform: rotate(0deg);
+    }
+    10% {
+        /* background-color: yellow; */
+        transform: rotate(36deg);
+    }
+    20% {
+        /* background-color: yellow; */
+        transform: rotate(72deg);
+    }
+    30% {
+        /* background-color: yellow; */
+        transform: rotate(108deg);
+    }
+    40% {
+        /* background-color: yellow; */
+        transform: rotate(144deg);
+    }
+    50% {
+        /* background-color: yellow; */
+        transform: rotate(180deg);
+    }
+    60% {
+        /* background-color: yellow; */
+        transform: rotate(216deg);
+    }
+    70% {
+        /* background-color: yellow; */
+        transform: rotate(256deg);
+    }
+    80% {
+        /* background-color: yellow; */
+        transform: rotate(288deg);
+    }
+    90% {
+        /* background-color: yellow; */
+        transform: rotate(324deg);
+    }
+    100% {
+        /* background-color: black; */
+        transform: rotate(360deg);
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .rotating{
+        width: 700px;
+        height: 700px;
+        margin: 100px auto;
+        text-align: center;
+        /* border: 3px dotted  red; */
+        border-radius: 200px;
+        animation: rot 12.5s linear infinite forwards;
+        /* animation-name: rot;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+        animation-delay: 10s; */
+        background-image: url('../../assets/img/Galaxy.png');
+        background-size: cover;
+        margin-left: -100px;
+    }
+  }

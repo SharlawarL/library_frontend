@@ -11,6 +11,11 @@ import { Router } from '@angular/router';
 export class AddBookComponent implements OnInit {
 
   public loder = false;
+  public book_title : any;
+  public book_author : any;
+  public book_publication : any;
+  public publication_year : any;
+  public quntity : any;
   constructor(
     private book: BookService, 
     private router : Router
@@ -37,7 +42,14 @@ export class AddBookComponent implements OnInit {
         this.router.navigate(['/Dashboard/Books'])
       }
       else
-        console.log("failed")
+      {
+        console.log(data)
+        this.book_title = data['book_title']
+        this.book_author = data['book_author']
+        this.book_publication = data['book_publication']
+        this.publication_year = data['publication_year']
+        this.quntity = data['quntity']
+      }
 
     });
   }

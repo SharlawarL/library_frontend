@@ -6,30 +6,35 @@
     </mat-card-header>
     <mat-card-content>
       <form class="booksform" (submit)="bookData($event)">
+        <b style="color:red">{{ book_title }} </b>
         <mat-form-field class="booksInput">
           <input matInput id="title" placeholder="Book Title">
           <!-- <mat-error *ngIf="titleFormControl.hasError('required')">
             Title is <strong>required</strong>
           </mat-error> -->
         </mat-form-field>
+        <b style="color:red">{{ book_author }} </b>
         <mat-form-field class="booksInput">
           <input matInput id="author" placeholder="Book Author">
           <!-- <mat-error *ngIf="authorFormControl.hasError('required')">
             Author is <strong>required</strong>
           </mat-error> -->
         </mat-form-field>
+        <b style="color:red">{{ book_publication }} </b>
           <mat-form-field class="booksInput">
             <input matInput id="publication" placeholder="Book publication" >
             <!-- <mat-error *ngIf="publicationFormControl.hasError('required')">
               Publication is <strong>required</strong>
             </mat-error> -->
           </mat-form-field>
+          <b style="color:red">{{ publication_year }} </b>
           <mat-form-field class="booksInput">
             <input matInput id="year" placeholder="Publication Year" >
             <!-- <mat-error *ngIf="yearFormControl.hasError('required')">
               Year is <strong>required</strong>
             </mat-error> -->
           </mat-form-field>
+          <b style="color:red">{{ quntity }} </b>
           <mat-form-field class="booksInput">
             <input matInput id="qunitity" placeholder="Book Quntity">
             <!-- <mat-error *ngIf="quntityFormControl.hasError('required')">

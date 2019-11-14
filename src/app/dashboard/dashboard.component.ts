@@ -13,6 +13,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 })
 export class DashboardComponent implements OnInit {
 
+  searchText: string = '';
   data : any;
   public classActive = "Home";
   public search = false;
@@ -29,18 +30,22 @@ export class DashboardComponent implements OnInit {
   }
 
   showHome(){
+    this.search = false
     this.classActive = "Home";
     this.rout.navigate(['Home'],{relativeTo: this.route});
   }
   showUser(){
+    this.search = false
     this.classActive = "User";
     this.rout.navigate(['User'],{relativeTo: this.route});
   }
   showBooks(){
+    this.search = false
     this.classActive = "Books";
     this.rout.navigate(['Books'],{relativeTo: this.route});
   }
   showLogs(){
+    this.search = false
     this.classActive = "Logs";
     this.rout.navigate(['Logs'],{relativeTo: this.route});
   }

@@ -12,13 +12,19 @@ import { MatPaginatorModule } from '@angular/material';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
+import { FormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+import {
+  MatSnackBarModule, MatSidenavModule, MatProgressBarModule, MatListModule, MatCheckboxModule,
+  MatTooltipModule
+} from '@angular/material';
 describe('LogsComponent', () => {
   let component: LogsComponent;
   let fixture: ComponentFixture<LogsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [MatPaginator,MatSort, LogsComponent ],
+      declarations: [ LogsComponent ],
       imports :[ MatCardModule,
         MatInputModule,
         RouterTestingModule,
@@ -27,8 +33,16 @@ describe('LogsComponent', () => {
         BrowserAnimationsModule,
         MatTabsModule,
         MatTableModule,
+        MatSelectModule,
+        MatSnackBarModule,
+        MatSidenavModule,
+        MatProgressBarModule,
+        MatListModule,
+        MatCheckboxModule,
+        MatTooltipModule,
+        MatPaginatorModule
       ],
-      providers: [MatPaginatorModule]
+      providers: [MatPaginator,MatSort,FormsModule]
     })
     .compileComponents();
   }));

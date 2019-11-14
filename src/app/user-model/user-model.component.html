@@ -41,7 +41,8 @@
                 <td *ngIf="log.bstatus == 0" >{{ log.book_title}}</td>
                 <td *ngIf="log.bstatus == 0" >{{ log.book_author}}</td>
                 <td *ngIf="log.bstatus == 0" >{{ log.idate}}</td>
-                <td *ngIf="log.bstatus == 0" style="color: red" (click)="returnBook(log.id)" >Not Returned</td>
+                <td *ngIf="log.bstatus == 0" ><button (click)="returnBook(log.id)" *ngIf="log.bstatus == 0" class="btn btn-danger">Click to Returned</button></td>
+                
               </tr>
             </tbody>
           </table>
@@ -67,7 +68,7 @@
                     <td>{{ log.book_author}}</td>
                     <td>{{ log.idate}}</td>
                     <td>{{ log.rdate}}</td>
-                    <td *ngIf="log.bstatus == 0" style="color: red" (click)="returnBook(log.id)">Not Returned</td>
+                    <td *ngIf="log.bstatus == 0" ><button (click)="returnBook(log.id)" *ngIf="log.bstatus == 0" class="btn btn-danger">Click to Returned</button></td>
                     <td *ngIf="log.bstatus == 1" style="color: green">Returned</td>
                   </tr>
                 </tbody>

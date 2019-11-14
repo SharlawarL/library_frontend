@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ActivatedRoute,Router } from '@angular/router';
 import { UserService } from '../service/user.service';
-import { BookIssueComponent } from '../book-issue/book-issue.component'
-import { UserModelComponent } from '../user-model/user-model.component'
+import { BookIssueComponent } from '../book-issue/book-issue.component';
+import { UserModelComponent } from '../user-model/user-model.component';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-user-view',
@@ -12,7 +13,8 @@ import { UserModelComponent } from '../user-model/user-model.component'
 })
 export class UserViewComponent implements OnInit {
   public data: any;
-
+  displayedColumns: string[] = ['firstname','lastname','mobile','email','action','delete'];
+  dataSource: MatTableDataSource<any[]>;
   constructor(
     private rout: Router,
     private User: UserService, 
@@ -31,8 +33,12 @@ export class UserViewComponent implements OnInit {
     console.log("User data")
     this.User.get('getUser').subscribe(res=>{  
       this.data = res
-      console.log(res);
+      this.dataSource = new MatTableDataSource(this.data);
     })
+  }
+  //filter on User
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   //for status change
@@ -41,7 +47,12 @@ export class UserViewComponent implements OnInit {
       console.log(id+" "+status) 
       let data= "user_id="+id+"&&status="+status
       this.User.post('changeStatus',data).subscribe(res=>{  
-         this.ngOnInit()
+        if(res['success'])
+        {
+          this.ngOnInit()
+          this.getUser()
+        }
+         
       })
   }
 

@@ -5,7 +5,10 @@ import {HttpClientModule} from '@angular/common/http';
 import { BooksViewComponent } from './books-view.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { OverlayModule } from "@angular/cdk/overlay";
-import {MatDialogModule} from '@angular/material';
+import {MatDialogModule , MatInputModule} from '@angular/material';
+import {MatTableModule} from '@angular/material/table';
+import {MatFormFieldModule } from '@angular/material/form-field';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 describe('BooksViewComponent', () => {
   let component: BooksViewComponent;
   let fixture: ComponentFixture<BooksViewComponent>;
@@ -18,7 +21,11 @@ describe('BooksViewComponent', () => {
         HttpClientTestingModule,
         HttpClientModule,
         OverlayModule,
-        MatDialogModule
+        MatDialogModule,
+        MatTableModule,
+        MatFormFieldModule,
+        MatInputModule,
+        BrowserAnimationsModule
       ],
       providers: [MatDialog]
     })

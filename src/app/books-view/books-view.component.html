@@ -2,6 +2,63 @@
 
 <h1>Books Details</h1>
 
+<mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+  
+  <table style="width: 1000px" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef> Book Title </th>
+      <td mat-cell *matCellDef="let element"> {{element.book_title}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="author">
+      <th mat-header-cell *matHeaderCellDef> Author </th>
+      <td mat-cell *matCellDef="let element"> {{element.book_author}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="publication">
+      <th mat-header-cell *matHeaderCellDef> Publication </th>
+      <td mat-cell *matCellDef="let element"> {{element.book_publication}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="year">
+      <th mat-header-cell *matHeaderCellDef> Year </th>
+      <td mat-cell *matCellDef="let element"> {{element.publication_year}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="issued">
+        <th mat-header-cell *matHeaderCellDef> Issued </th>
+        <td mat-cell *matCellDef="let element"> {{element.issue}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="available">
+      <th mat-header-cell *matHeaderCellDef> Available </th>
+      <td mat-cell *matCellDef="let element"> {{element.quntity - element.issue}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="quntity">
+      <th mat-header-cell *matHeaderCellDef> Total Quntity </th>
+      <td mat-cell *matCellDef="let element"> {{element.quntity}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let books"> 
+          <i class="fa fa-pencil-square" (click)="openDialog(books.book_id,books.book_title,books.book_author,books.book_publication,books.publication_year,books.quntity)"></i>  &nbsp;&nbsp;&nbsp;
+          <i class="fa fa-trash"></i>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+<!-- 
 <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -25,9 +82,8 @@
         <td [ngStyle]="{'color':books.quntity === books.issue? 'red': 'green'}" >{{books.quntity - books.issue}}</td>
         <td [ngStyle]="{'color':books.quntity === books.issue? 'red': 'green'}">{{books.quntity}}</td>
         <td>  
-          <i class="fa fa-pencil-square" (click)="openDialog(books.book_id,books.book_title,books.book_author,books.book_publication,books.publication_year,books.quntity)"></i>  &nbsp;&nbsp;&nbsp;
-          <i class="fa fa-trash"></i>
+          
         </td>
       </tr>
     </tbody>
-  </table>
+  </table> -->

@@ -5,6 +5,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { UserComponent } from '../user/user.component';
 import { BookModelComponent } from '../book-model/book-model.component';
 import { Title } from '@angular/platform-browser';
+import {MatTableDataSource} from '@angular/material/table';
 
 
 @Component({
@@ -15,7 +16,8 @@ import { Title } from '@angular/platform-browser';
 export class BooksViewComponent implements OnInit {
 
   public data : any;
-
+  displayedColumns: string[] = ['title','author','publication','year','issued','available','quntity','action'];
+  dataSource: MatTableDataSource<any[]>;
   constructor(
     private rout: Router,
     private route: ActivatedRoute,
@@ -30,8 +32,13 @@ export class BooksViewComponent implements OnInit {
   getBook(){
     this.book.get('getBook').subscribe(res=>{  
       this.data = res
-      console.log(res);
+      this.dataSource = new MatTableDataSource(this.data);
     })
+  }
+
+  //filter on books
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   showAddbooks(){

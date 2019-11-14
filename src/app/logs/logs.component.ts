@@ -3,8 +3,6 @@ import { ActivatedRoute,Router } from '@angular/router';
 import { UserService } from '../service/user.service';
 import { BookService } from '../service/book.service';
 import {MatTableDataSource} from '@angular/material/table';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
 
 @Component({
   selector: 'app-logs',
@@ -16,8 +14,6 @@ export class LogsComponent implements OnInit {
 
   displayedColumns: string[] = ['fullname','book_title','book_author','idate','status'];
   dataSource: MatTableDataSource<any[]>;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
   public logs : any;
   public data : any;
   public books : any;
@@ -32,8 +28,6 @@ export class LogsComponent implements OnInit {
     this.getlogs()
     this.getUser()
     this.getBook()
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
   }
 
   ngAfterViewInit() {
@@ -52,10 +46,6 @@ export class LogsComponent implements OnInit {
   //filter on logs
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
   }
   //selected User
   selectUser(event : any){
